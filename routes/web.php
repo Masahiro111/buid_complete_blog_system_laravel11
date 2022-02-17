@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/user', function () {
+    $comment = Comment::find(1);
+    dd($comment->user);
+});
+
 
 Route::get('/', function () {
     return view('home');
