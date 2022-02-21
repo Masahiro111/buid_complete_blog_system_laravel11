@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Tag;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -23,6 +24,17 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Category::factory(10)->create();
         \App\Models\User::factory(10)->create();
-        \App\Models\Post::factory(10)->create();
+        $posts = \App\Models\Post::factory(10)->create();
+        \App\Models\Comment::factory(10)->create();
+        \App\Models\Tag::factory(20)->create();
+
+        foreach ($posts as $post) {
+            $tags_ids = [];
+            $tags_ids[] = Tag::all()->random()->id;
+            $tags_ids[] = Tag::all()->random()->id;
+            $tags_ids[] = Tag::all()->random()->id;
+
+            $post->tags()->sync($tags_ids);
+        }
     }
 }
