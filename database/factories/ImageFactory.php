@@ -19,7 +19,7 @@ class ImageFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'extension' => 'jpg',
-            'path' => '/public/images/' . $this->faker->word() . '.' . 'jpg',
+            'path' => 'images/1.jpg',
             // 'imageable_id' => 1,
             // 'imageable_type' => 'App\Models\Post',
         ];
