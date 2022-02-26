@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('post.show');
+Route::post('/posts/{post:slug}', [PostController::class, 'addComment'])->name('post.add_comment');
 
 Route::get('/about', function () {
     return view('about');
