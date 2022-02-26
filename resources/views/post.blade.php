@@ -56,6 +56,9 @@
 
                 <div class="row animate-box">
                     <div class="col-md-12">
+
+                        <x-blog.message :status="'success'"></x-blog.message>
+
                         <h2 class="colorlib-heading-2">Say something</h2>
 
                         @auth
