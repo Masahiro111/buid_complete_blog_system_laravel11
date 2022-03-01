@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use App\MyClasses\MyService;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,5 +26,22 @@ class HomeController extends Controller
             'categories',
             'tags'
         ));
+    }
+
+    public function servicetest()
+    {
+        // dd(app(''));
+        // dd($myservice);
+
+        $myservice = app('App\MyClasses\MyService');
+
+        dd($myservice);
+
+        $data = [
+            'msg' => $myservice->say(),
+            'data' => $myservice->data(),
+        ];
+
+        return view('hello.index', $data);
     }
 }

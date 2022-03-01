@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TagController;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
@@ -32,8 +34,17 @@ Route::get('/contact', [ContactController::class, 'create'])->name('contact.crea
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
+Route::get('categories/{category:slug}', [CategoryController::class, 'show'])->name('categories.show');
+Route::get('tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
+
+
+
+
+// Laravel 書籍
+Route::get('/hello', [HomeController::class, 'servicetest'])->name('hello');
