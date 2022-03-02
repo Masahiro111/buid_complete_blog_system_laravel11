@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminController\DashboardController;
+use App\Http\Controllers\AdminControllerDashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
@@ -22,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Front User Routes
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -46,7 +50,9 @@ Route::get('tags/{tag:name}', [TagController::class, 'show'])->name('tags.show')
 require __DIR__ . '/auth.php';
 
 
+// Admin Dashboard Routes
 
+Route::get('admin', [DashboardController::class, 'index'])->name('admin.index');
 
 // Laravel 書籍
 Route::get('/hello', [HomeController::class, 'servicetest'])->name('hello');
