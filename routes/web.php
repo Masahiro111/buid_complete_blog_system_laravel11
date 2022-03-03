@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Front User Routes
+// Front User Routes ---------------------------------------------------------------------------
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -50,7 +50,7 @@ Route::get('tags/{tag:name}', [TagController::class, 'show'])->name('tags.show')
 require __DIR__ . '/auth.php';
 
 
-// Admin Dashboard Routes
+// Admin Dashboard Routes ---------------------------------------------------------------------------
 
 Route::get('admin', [DashboardController::class, 'index'])->name('admin.index');
 
