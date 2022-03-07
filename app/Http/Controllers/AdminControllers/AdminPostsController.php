@@ -26,7 +26,7 @@ class AdminPostsController extends Controller
     public function create()
     {
         return view('admin_dashboard.posts.create', [
-            'categories' => Category::pluck('name', 'id')
+            'categories' => Category::pluck('name', 'id'),
         ]);
     }
 
