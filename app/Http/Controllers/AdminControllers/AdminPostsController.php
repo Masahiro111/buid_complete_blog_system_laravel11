@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class AdminPostsController extends Controller
 {
+
+    private $rules = [
+        'title' => 'required|max:200',
+        'slug' => 'required|max:100',
+        'except' => 'required|max:300',
+        'category_id' => 'required|numeric',
+        'thumbnail' => 'required|file|mimes:jpg,png,webp,svg,jpeg',
+        'body' => 'required',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +48,8 @@ class AdminPostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate($this->rules);
+        dd($validated);
     }
 
     /**

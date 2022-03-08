@@ -37,7 +37,7 @@
                 <h5 class="card-title">Add New Post</h5>
                 <hr />
 
-                <form action="{{ route('admin.posts.store') }}" method="POST">
+                <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mt-4 form-body">
@@ -46,29 +46,44 @@
                                 <div class="p-4 border rounded border-3">
                                     <div class="mb-3">
                                         <label for="inputProductTitle" class="form-label">Post Title</label>
-                                        <input type="text" class="form-control" id="inputProductTitle" placeholder="Enter product title">
+                                        <input type="text" name="title" class="form-control" id="inputProductTitle" required>
+
+                                        @error('title')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductTitle" class="form-label">Post Slug</label>
-                                        <input type="text" class="form-control" id="inputProductTitle" placeholder="Enter product title">
+                                        <input type="text" name="slug" class="form-control" id="inputProductTitle" required>
+
+                                        @error('slug')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription" class="form-label">Post Excerpt</label>
-                                        <textarea class="form-control" id="inputProductDescription" rows="3"></textarea>
+                                        <textarea class="form-control" name="excerpt" id="inputProductDescription" rows="3"></textarea>
+
+                                        @error('excerpt')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
+
                                     <div class="mb-3">
                                         <label for="inputProductTitle" class="form-label">Post Category</label>
-
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="p-3 border rounded">
                                                     <div class="mb-3">
-                                                        <select class="single-select">
+                                                        <select class="single-select" name="category_id" required>
 
                                                             @foreach ($categories as $key => $category)
                                                             <option value="{{ $key }}">{{ $category }}</option>
                                                             @endforeach
 
+                                                            @error('category_id')
+                                                            <p class="text-danger">{{ $message }}</p>
+                                                            @enderror
                                                         </select>
                                                     </div>
                                                 </div>
@@ -79,14 +94,23 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription" class="form-label">Post Content</label>
-                                        <textarea name="" class="form-control" id="post_content" cols="30" rows="10"></textarea>
+                                        <textarea name="body" class="form-control" id="post_content" cols="30" rows="10"></textarea>
 
+                                        @error('body')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="inputProductDescription" class="form-label">Post Thumbnail</label>
-                                        <input id="image-uploadify" type="file" accept="image/*" multiple>
+                                        <input name="thumbnail" id="thumbnail" type="file">
+
+                                        @error('thumbnail')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
+
+                                    <button type="submit" class="btn btn-primary">Add Post</button>
 
                                 </div>
                             </div>
@@ -108,9 +132,9 @@
 <script src="{{ asset('admin_dashboard_assets/plugins/Drag-And-Drop/dist/imageuploadify.min.js') }}"></script>
 <script src="{{ asset('admin_dashboard_assets/plugins/select2/js/select2.min.js') }}"></script>
 <script>
-    $(document).ready(function () {
-		$('#image-uploadify').imageuploadify();
-    })
+    // $(document).ready(function () {
+	// 	$('#image-uploadify').imageuploadify();
+    // })
 
     $('.single-select').select2({
         theme: 'bootstrap4',
