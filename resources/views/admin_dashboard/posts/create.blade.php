@@ -46,7 +46,7 @@
                                 <div class="p-4 border rounded border-3">
                                     <div class="mb-3">
                                         <label for="inputProductTitle" class="form-label">Post Title</label>
-                                        <input type="text" name="title" class="form-control" id="inputProductTitle" required>
+                                        <input type="text" name="title" value="{{ old('title') }}" class="form-control" id="inputProductTitle" required>
 
                                         @error('title')
                                         <p class="text-danger">{{ $message }}</p>
@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductTitle" class="form-label">Post Slug</label>
-                                        <input type="text" name="slug" class="form-control" id="inputProductTitle" required>
+                                        <input type="text" name="slug" value="{{ old('slug') }}" class="form-control" id="inputProductTitle" required>
 
                                         @error('slug')
                                         <p class="text-danger">{{ $message }}</p>
@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription" class="form-label">Post Excerpt</label>
-                                        <textarea class="form-control" name="excerpt" id="inputProductDescription" rows="3"></textarea>
+                                        <textarea class="form-control" name="excerpt" id="inputProductDescription" rows="3">value="{{ old('excerpt') }}"</textarea>
 
                                         @error('excerpt')
                                         <p class="text-danger">{{ $message }}</p>
@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription" class="form-label">Post Content</label>
-                                        <textarea name="body" class="form-control" id="post_content" cols="30" rows="10"></textarea>
+                                        <textarea name="body" class="form-control" id="post_content" cols="30" rows="10">value="{{ old('body') }}"</textarea>
 
                                         @error('body')
                                         <p class="text-danger">{{ $message }}</p>
