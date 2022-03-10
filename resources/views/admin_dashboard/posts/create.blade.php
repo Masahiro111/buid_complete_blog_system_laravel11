@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription" class="form-label">Post Excerpt</label>
-                                        <textarea class="form-control" name="excerpt" id="inputProductDescription" rows="3">value="{{ old('excerpt') }}"</textarea>
+                                        <textarea class="form-control" name="excerpt" id="inputProductDescription" rows="3">{{ old('excerpt') }}</textarea>
 
                                         @error('excerpt')
                                         <p class="text-danger">{{ $message }}</p>
@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription" class="form-label">Post Content</label>
-                                        <textarea name="body" class="form-control" id="post_content" cols="30" rows="10">value="{{ old('body') }}"</textarea>
+                                        <textarea name="body" class="form-control" id="post_content" cols="30" rows="10">{{ old('body') }}</textarea>
 
                                         @error('body')
                                         <p class="text-danger">{{ $message }}</p>
