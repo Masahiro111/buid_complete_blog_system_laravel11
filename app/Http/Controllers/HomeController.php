@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::withCount('comments')->paginate(8);
+        $posts = Post::withCount('comments')->latest()->paginate(2);
 
         $recent_posts = Post::latest()->take(5)->get();
 

@@ -26,10 +26,10 @@
 
         <div class="card">
             <div class="p-4 card-body">
-                <h5 class="card-title">Add New Post</h5>
+                <h5 class="card-title">Edit Post {{ $post->title }}</h5>
                 <hr />
 
-                <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.posts.update', $post) }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mt-4 form-body">
@@ -38,7 +38,7 @@
                                 <div class="p-4 border rounded border-3">
                                     <div class="mb-3">
                                         <label for="inputProductTitle" class="form-label">Post Title</label>
-                                        <input type="text" name="title" value="{{ old('title') }}" class="form-control" id="inputProductTitle" required>
+                                        <input type="text" name="title" value="{{ old('title', $post->title) }}" class="form-control" id="inputProductTitle" required>
 
                                         @error('title')
                                         <p class="text-danger">{{ $message }}</p>
@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductTitle" class="form-label">Post Slug</label>
-                                        <input type="text" name="slug" value="{{ old('slug') }}" class="form-control" id="inputProductTitle" required>
+                                        <input type="text" name="slug" value="{{ old('slug',$post->slug) }}" class="form-control" id="inputProductTitle" required>
 
                                         @error('slug')
                                         <p class="text-danger">{{ $message }}</p>
@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription" class="form-label">Post Excerpt</label>
-                                        <textarea class="form-control" name="excerpt" id="inputProductDescription" rows="3">{{ old('excerpt') }}</textarea>
+                                        <textarea class="form-control" name="excerpt" id="inputProductDescription" rows="3">{{ old('excerpt', $post->excerpt) }}</textarea>
 
                                         @error('excerpt')
                                         <p class="text-danger">{{ $message }}</p>
@@ -70,7 +70,7 @@
                                                         <select class="single-select" name="category_id" required>
 
                                                             @foreach ($categories as $key => $category)
-                                                            <option value="{{ $key }}">{{ $category }}</option>
+                                                            <option {{ $post->category_id === $key ? 'selected' : '' }} value="{{ $key }}">{{ $category }}</option>
                                                             @endforeach
 
                                                             @error('category_id')
@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription" class="form-label">Post Content</label>
-                                        <textarea name="body" class="form-control" id="post_content" cols="30" rows="10">{{ old('body') }}</textarea>
+                                        <textarea name="body" class="form-control" id="post_content" cols="30" rows="10">{{ old('body', $post->body) }}</textarea>
 
                                         @error('body')
                                         <p class="text-danger">{{ $message }}</p>
@@ -97,12 +97,14 @@
                                         <label for="inputProductDescription" class="form-label">Post Thumbnail</label>
                                         <input name="thumbnail" id="thumbnail" type="file">
 
+                                        <img src="/storage/{{ $post->image->path }}" alt="" width="200px">
+
                                         @error('thumbnail')
                                         <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
 
-                                    <button type="submit" class="p-2 px-4 text-white bg-blue-600 rounded-sm">Add Post</button>
+                                    <button type="submit" class="p-2 px-4 text-white bg-blue-600 rounded-sm">Update Post</button>
 
                                 </div>
                             </div>

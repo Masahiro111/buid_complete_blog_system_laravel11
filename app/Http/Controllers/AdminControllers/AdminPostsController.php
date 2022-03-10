@@ -90,9 +90,12 @@ class AdminPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin_dashboard.posts.edit', [
+            'post' => $post,
+            'categories' => Category::pluck('name', 'id'),
+        ]);
     }
 
     /**

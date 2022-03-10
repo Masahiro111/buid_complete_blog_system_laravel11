@@ -1,8 +1,16 @@
 @extends("admin_dashboard.layouts.app")
 
 @section("style")
+<link href="{{ asset('admin_dashboard_assets/plugins/Drag-And-Drop/dist/imageuploadify.min.css') }}" rel="stylesheet" />
 <link href="{{ asset('admin_dashboard_assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
 <link href="{{ asset('admin_dashboard_assets/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet" />
+
+<style>
+    #image-uploadif {
+        /* border: none; */
+        margin: 0;
+    }
+</style>
 @endsection
 
 @section("wrapper")
