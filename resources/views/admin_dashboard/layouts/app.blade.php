@@ -26,9 +26,16 @@
         <link rel="stylesheet" href="{{ asset('admin_dashboard_assets/css/semi-dark.css') }}" />
         <link rel="stylesheet" href="{{ asset('admin_dashboard_assets/css/header-colors.css') }}" />
         <title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
+
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
 
     <body>
+
+        @if (Session::has('success'))
+        <div class="fixed z-10 w-56 text-white bg-blue-700 rounded-lg general-message alert alert-info bottom-4 right-4">{{ Session::get('success') }}</div>
+        @endif
+
         <!--wrapper-->
         <div class="wrapper">
             <!--start header -->

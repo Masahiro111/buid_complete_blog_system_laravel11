@@ -110,7 +110,7 @@
                                         @enderror
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary">Add Post</button>
+                                    <button type="submit" class="p-2 px-4 text-white bg-blue-600 rounded-sm">Add Post</button>
 
                                 </div>
                             </div>
@@ -149,5 +149,9 @@
         placeholder: $(this).data('placeholder'),
         allowClear: Boolean($(this).data('allow-clear')),
     });
+
+    setTimeout(() => {
+        $('.general-message ').fadeOut();
+    }, 5000);
 </script>
 @endsection
