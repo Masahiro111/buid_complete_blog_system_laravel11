@@ -105,9 +105,31 @@ class AdminPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+
+        $this->rules['thumbnail'] = 'nullable|file~mimes:jpg,png,webp,svg,jpeg';
+
+        $validated = $request->validate($this->rules);
+
+        $post->update($validated);
+
+        if ($request->has('thumbnail')) {
+            $thumbnail = $request->file('thumbnail');
+            $filename = $thumbnail->getClientOriginalName();
+            $file_extension = $thumbnail->getClientOriginalExtension();
+            $path = $thumbnail->store('images', 'public');
+
+            $post->image()->update([
+                'name' => $filename,
+                'extension' => $file_extension,
+                'path' => $path,
+            ]);
+        }
+
+        return redirect()
+            ->route('admin.posts.edit', $post)
+            ->with('success', 'Post has been created.');
     }
 
     /**

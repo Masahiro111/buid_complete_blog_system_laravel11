@@ -31,6 +31,7 @@
 
                 <form action="{{ route('admin.posts.update', $post) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PATCH')
 
                     <div class="mt-4 form-body">
                         <div class="row">
